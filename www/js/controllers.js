@@ -91,6 +91,7 @@ angular.module('starter.controllers', [])
 
   $http.get('https://stormy-sierra-8448.herokuapp.com/api/?beer=' + $scope.beer).success(function(data) {
     $scope.beer_details = data;
+
   });
   // https://stormy-sierra-8448.herokuapp.com/api/?beer=
 })
