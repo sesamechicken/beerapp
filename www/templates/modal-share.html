@@ -1,0 +1,20 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Share</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeShare()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="shareItem()">
+      <div class="list">
+        <label class="item item-input">
+          <input type="email" placeholder="Your friend's email address" ng-model="shareData.email">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Share</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

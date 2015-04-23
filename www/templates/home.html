@@ -6,12 +6,25 @@
     pulling-text="Pull to refresh..."
     on-refresh="doRefresh()">
   </ion-refresher>
-    <p>This is a list of stuff</p>
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        <input type="search" placeholder="Search..." ng-model="query">
+      </div>
+    </div>
+
       <ion-list can-swipe="listCanSwipe">
-        <ion-item ng-repeat="beer in beerlist">
-          {{beer.name}} - {{beer.price}}
-          <ion-option-button class="button-positive" ng-click="share(item)">
-            Share
+        <ion-item ng-repeat="beer in beerlist | filter: query" href="#/app/beer/{{beer.name}}">
+
+          <div class="row">
+            <div class="col col-75">
+              <h2>{{beer.name}}</h2>
+              <p><i>per Case</i></p>
+            </div>
+            <div class="col" align="right">{{beer.price}}</div>
+          </div>
+          <ion-option-button class="button-positive" ng-click="share({{beer}})">
+            <i class="icon ion-share"></i> &nbsp; Share
           </ion-option-button>
         </ion-item>
     </ion-list>

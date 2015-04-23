@@ -38,7 +38,6 @@ angular.module('beerApp', ['ionic', 'starter.controllers'])
       }
     }
   })
-
   .state('app.browse', {
     url: "/browse",
     views: {
@@ -47,26 +46,24 @@ angular.module('beerApp', ['ionic', 'starter.controllers'])
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: "/playlists/:playlistId",
+  .state('app.playlists', {
+    url: "/playlists",
     views: {
       'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        templateUrl: "templates/playlists.html",
+        controller: 'PlaylistsCtrl'
       }
     }
   })
-
+  .state('app.single', {
+    url: "/beer/:id",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/beer.html",
+        controller: 'beerListCtrl'
+      }
+    }
+  })
   .state('app.home', {
     url: "/home",
     views: {

@@ -33,7 +33,17 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('beerListCtrl', function($scope, $http){
+.controller('beerListCtrl', function($scope, $ionicModal, $ionicListDelegate, $http){
+
+  // Create the share modal
+  $ionicModal.fromTemplateUrl('templates/modal-share.html', {
+    scope: $scope,
+    animation: 'slide-in-right'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+
   $scope.listCanSwipe = true;
   $scope.beerlist = [
     {id: 1, name: 'Siera Nevada Pale Ale', price: '$12.99'},
@@ -41,6 +51,21 @@ angular.module('starter.controllers', [])
     {id: 3, name: 'Harvest Amber Ale', price: '$12.99'},
     {id: 4, name: 'Green Flash IPA', price: '$12.99'}
   ];
+
+  $scope.shareItem = function(){
+    $scope.modal.hide();
+    $ionicListDelegate.closeOptionButtons();
+  }
+  $scope.share = function(beer){
+    $scope.modal.show();
+    console.log(beer);
+  }
+  $scope.closeShare = function(){
+    $scope.modal.hide();
+    $ionicListDelegate.closeOptionButtons();
+  }
+
+
 
   $scope.doRefresh = function() {
     $http.get('/new-items')
@@ -59,6 +84,16 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('beerDetailCtrl', function($scope, $http, $stateParams){
+  $scope.beer = $stateParams.id;
+
+  $scope.beer_details = [];
+
+  $http.get('https://stormy-sierra-8448.herokuapp.com/api/?beer=' + $scope.beer).success(function(data) {
+    $scope.beer_details = data;
+  });
+  // https://stormy-sierra-8448.herokuapp.com/api/?beer=
+})
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
