@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
     {id: 1, name: 'Sierra Nevada Pale Ale', price: '$12.99', unit: 'case'},
     {id: 2, name: 'Stone IPA', price: '$12.99', unit: 'case'},
     {id: 3, name: 'New Belgium Snapshot Belgian', price: '$12.99', unit: 'case'},
-    {id: 4, name: 'Green Flash IPA', price: '$12.99', unit: 'case'},
+    {id: 4, name: 'Green Flash IPA', price: '$6.99', unit: '6 pack'},
     {id: 5, name: 'Harpoon Long Thaw IPA', price: '$12.99', unit: 'case'},
     {id: 6, name: 'Brew Kettle Old 21', price: '$12.99', unit: 'case'},
     {id: 7, name: 'Honey Brown', price: '$12.99', unit: 'case'}
@@ -87,7 +87,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('beerDetailCtrl', function($scope, $http, $stateParams){
+.controller('beerDetailCtrl', function($scope, $http, $ionicLoading, $stateParams){
+  
+$ionicLoading.show({
+      template: 'Loading...'
+    });
+  
+
   $scope.beer = $stateParams.id;
 
   $scope.beer_details = [];
@@ -95,21 +101,9 @@ angular.module('starter.controllers', [])
   $http.get('https://stormy-sierra-8448.herokuapp.com/api/?q=' + $scope.beer).success(function(data) {
     $scope.beer_details = data.data[0];
     console.log(data.data[0]);
+    $ionicLoading.hide();
   });
   // brewerydb.com/
   // b339256c241180f6a38f6baac6d63805
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});

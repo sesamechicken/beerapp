@@ -18,7 +18,7 @@
     </p>
     <p class="card" style="text-align: center;">
       <a href="javascript:void(0)" class="subdued">ABV: {{beer_details.abv}}%</a>
-      <a href="javascript:void(0)" class="subdued">IBU: {{beer_details.ibu}}</a>
+      <a href="javascript:void(0)" class="subdued" ng-hide="!beer_details.ibu">IBU: {{beer_details.ibu}}</a>
       <a href="javascript:void(0)" class="subdued">Glass: {{beer_details.glass.name}}</a>
     </p>
   </div>

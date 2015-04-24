@@ -1,25 +1,35 @@
-<ion-view view-title="Home">
-
-
+<ion-view view-title="D.E.P.">
+<ion-header-bar align-title="left" class="bar-positive">
+  <div class="buttons">
+    <button class="button" ng-click="doSomething()">Left Button</button>
+  </div>
+  <h1 class="title">Title!</h1>
+  <div class="buttons">
+    <button class="button">Right Button</button>
+  </div>
+</ion-header-bar>
   <ion-content>
   <ion-refresher
     pulling-text="Pull to refresh..."
     on-refresh="doRefresh()">
   </ion-refresher>
 
-    <div class="card">
-      <div class="item item-text-wrap">
-        <input type="search" placeholder="Search..." ng-model="query">
-      </div>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="query">
+      </label>
     </div>
 
       <ion-list can-swipe="listCanSwipe">
+        <div class="item item-divider">
+          Fort Thomas
+        </div>
         <ion-item ng-repeat="beer in beerlist | filter: query" href="#/app/beer/{{beer.name}}">
-
           <div class="row">
             <div class="col col-75">
               <h2>{{beer.name}}</h2>
-              <p><i>per Case</i></p>
+              <p><i>per {{beer.unit}}</i></p>
             </div>
             <div class="col" align="right">{{beer.price}}</div>
           </div>
