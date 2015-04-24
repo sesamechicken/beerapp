@@ -1,23 +1,25 @@
-<ion-view ng-controller="beerDetailCtrl" view-title="{{beer_details.beer_name}}">
+<ion-view ng-controller="beerDetailCtrl" view-title="{{beer_details.name}}">
   <ion-content>
     <div class="list card">
 
   <div class="item item-avatar">
-    <img src="{{beer_details.image}}">
-    <h2>{{beer_details.beer_name}}</h2>
-    <p>{{beer_details.brewer}}</p>
+    <img src="{{beer_details.labels.icon}}">
+    <h2>{{beer_details.name}}</h2>
+    <p>{{beer_details.breweries[0].name}}</p>
   </div>
 
   <div class="item item-body">
-    <div class="item-image"><img src="{{beer_details.image}}"></div>
+    <div class="item-image"><img src="{{beer_details.labels.large}}"></div>
     <p>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-      the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
+      {{beer_details.description}}
     </p>
     <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
+      <b>Availability:</b> {{beer_details.available.description}}
+    </p>
+    <p class="card" style="text-align: center;">
+      <a href="javascript:void(0)" class="subdued">ABV: {{beer_details.abv}}%</a>
+      <a href="javascript:void(0)" class="subdued">IBU: {{beer_details.ibu}}</a>
+      <a href="javascript:void(0)" class="subdued">Glass: {{beer_details.glass.name}}</a>
     </p>
   </div>
 

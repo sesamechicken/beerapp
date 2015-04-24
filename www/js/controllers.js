@@ -46,10 +46,13 @@ angular.module('starter.controllers', [])
 
   $scope.listCanSwipe = true;
   $scope.beerlist = [
-    {id: 1, name: 'Siera Nevada Pale Ale', price: '$12.99'},
-    {id: 2, name: 'Stone IPA', price: '$12.99'},
-    {id: 3, name: 'Harvest Amber Ale', price: '$12.99'},
-    {id: 4, name: 'Green Flash IPA', price: '$12.99'}
+    {id: 1, name: 'Sierra Nevada Pale Ale', price: '$12.99', unit: 'case'},
+    {id: 2, name: 'Stone IPA', price: '$12.99', unit: 'case'},
+    {id: 3, name: 'New Belgium Snapshot Belgian', price: '$12.99', unit: 'case'},
+    {id: 4, name: 'Green Flash IPA', price: '$12.99', unit: 'case'},
+    {id: 5, name: 'Harpoon Long Thaw IPA', price: '$12.99', unit: 'case'},
+    {id: 6, name: 'Brew Kettle Old 21', price: '$12.99', unit: 'case'},
+    {id: 7, name: 'Honey Brown', price: '$12.99', unit: 'case'}
   ];
 
   $scope.shareItem = function(){
@@ -73,7 +76,7 @@ angular.module('starter.controllers', [])
        $scope.items = newItems;
      })
      .error(function(error){
-      alert(error);
+      console.error(error);
      })
      .finally(function() {
        // Stop the ion-refresher from spinning
@@ -89,11 +92,12 @@ angular.module('starter.controllers', [])
 
   $scope.beer_details = [];
 
-  $http.get('https://stormy-sierra-8448.herokuapp.com/api/?beer=' + $scope.beer).success(function(data) {
-    $scope.beer_details = data;
-
+  $http.get('https://stormy-sierra-8448.herokuapp.com/api/?q=' + $scope.beer).success(function(data) {
+    $scope.beer_details = data.data[0];
+    console.log(data.data[0]);
   });
-  // https://stormy-sierra-8448.herokuapp.com/api/?beer=
+  // brewerydb.com/
+  // b339256c241180f6a38f6baac6d63805
 })
 
 .controller('PlaylistsCtrl', function($scope) {
