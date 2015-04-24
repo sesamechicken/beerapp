@@ -14,3 +14,22 @@
 .slide-in-right.ng-leave, .slide-in-right > .ng-leave {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
+
+  .round{
+  	border-radius: 100%;
+  	border: 0;
+  	width: 52px;
+  	height: 52px;
+  	background-color: #d3d3d3;
+  }
+  .deps-magenta-bttn{
+  	background-color: #702136;
+  	color: #fff;
+  }
+  .deps-magenta-bkgd{
+  	background-color: #702136;
+  	color: #fff;
+  }
+  .font-12px{
+  	font-size: 12px;
+  }

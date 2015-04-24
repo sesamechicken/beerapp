@@ -57,6 +57,7 @@ angular.module('starter.controllers', [])
 
   $scope.shareItem = function(){
     $scope.modal.hide();
+    $scope.shareData = {};
     $ionicListDelegate.closeOptionButtons();
   }
   $scope.share = function(beer){
@@ -89,10 +90,9 @@ angular.module('starter.controllers', [])
 
 .controller('beerDetailCtrl', function($scope, $http, $ionicLoading, $stateParams){
   
-$ionicLoading.show({
+  $ionicLoading.show({
       template: 'Loading...'
-    });
-  
+  });
 
   $scope.beer = $stateParams.id;
 
@@ -106,4 +106,17 @@ $ionicLoading.show({
   // brewerydb.com/
   // b339256c241180f6a38f6baac6d63805
 })
+
+.controller('LocationsCtrl', function($scope, $stateParams){
+
+  $scope.openMaps = function(address){
+    ref = window.open('maps://?q='+address, '_system');
+  }
+
+});
+
+
+
+
+
 

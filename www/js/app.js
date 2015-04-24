@@ -29,29 +29,11 @@ angular.module('beerApp', ['ionic', 'starter.controllers'])
     templateUrl: "templates/menu.html",
     controller: 'AppCtrl'
   })
-
-  .state('app.search', {
-    url: "/search",
+  .state('app.locations', {
+    url: "/locations",
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html"
-      }
-    }
-  })
-  .state('app.browse', {
-    url: "/browse",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/browse.html"
-      }
-    }
-  })
-  .state('app.playlists', {
-    url: "/playlists",
-    views: {
-      'menuContent': {
-        templateUrl: "templates/playlists.html",
-        controller: 'PlaylistsCtrl'
+        templateUrl: "templates/locations.html"
       }
     }
   })
